@@ -221,7 +221,7 @@ func (w *UDPWriter) Write(p []byte) (n int, err error) {
 	// 1 for the function that called us.
 	file, line := getCallerIgnoringLogMulti(1)
 
-	m := constructMessage(p, w.hostname, w.Facility, file, line)
+	m := constructMessage(p, w.hostname, w.Extra, w.Facility, file, line)
 
 	if err = w.WriteMessage(m); err != nil {
 		return 0, err

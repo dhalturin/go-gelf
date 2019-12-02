@@ -66,7 +66,7 @@ func (w *TCPWriter) WriteMessage(m *Message) (err error) {
 func (w *TCPWriter) Write(p []byte) (n int, err error) {
 	file, line := getCallerIgnoringLogMulti(1)
 
-	m := constructMessage(p, w.hostname, w.Facility, file, line)
+	m := constructMessage(p, w.hostname, w.Extra, w.Facility, file, line)
 
 	if err = w.WriteMessage(m); err != nil {
 		return 0, err
